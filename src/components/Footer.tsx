@@ -96,7 +96,7 @@ const Footer = () => {
 
       {/* Footer Bottom */}
       <div className="text-center text-gray-500 text-sm mt-8 border-t border-gray-700 pt-4">
-        © 2024, BOOKORIA
+        © 2025, BOOKORIA
       </div>
     </footer>
   );

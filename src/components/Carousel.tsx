@@ -58,7 +58,7 @@ const books: Book[] = [
 
 export function BookCarousel() {
   return (
-    <div className="relative px-1  max-w-7xl mx-auto">
+    <div className="relative px-5  max-w-7xl mx-auto">
       <Carousel className="w-full">
         <CarouselContent className="flex -ml-4">
           {books.map((book) => (

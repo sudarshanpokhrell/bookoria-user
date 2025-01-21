@@ -5,14 +5,14 @@ import Link from "next/link";
 
 const HeroSection = () => {
   return (
-    <section className="container mx-auto px-4 py-10">
+    <section className="container mx-auto px-10 py-10">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
         {/* Text Content */}
         <div className="space-y-6">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight">
             Your Gateway to Literary Adventures!
           </h1>
-          <p className="text-lg md:text-xl text-gray-600 max-w-lg">
+          <p className="text-lg md:text-xl text-gray-900 max-w-lg">
             Discover a world of stories, knowledge, and imagination. Find your
             next favorite book with us.
           </p>
