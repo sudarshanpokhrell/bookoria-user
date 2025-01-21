@@ -31,10 +31,10 @@ const DropdownMenu = ({ trigger, items }: DropdownProps) => {
     <NavigationMenu>
       <NavigationMenuList>
         <NavigationMenuItem>
-          <NavigationMenuTrigger className="bg-transparent hover:bg-transparent text-md font-medium">
+          <NavigationMenuTrigger className="  text-md font-medium">
             {trigger}
           </NavigationMenuTrigger>
-          <NavigationMenuContent>
+          <NavigationMenuContent className="bg-white">
             <div className="w-48 rounded-md shadow-lg">
               <ul className="py-1">
                 {items.map((item) => (

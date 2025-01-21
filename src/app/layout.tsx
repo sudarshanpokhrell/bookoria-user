@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import {  Figtree, Poppins } from "next/font/google";
+import { Figtree, Poppins } from "next/font/google";
 import "./globals.css";
 
 const geistSans = Poppins({
@@ -8,11 +8,9 @@ const geistSans = Poppins({
   weight: ["400", "700"],
 });
 
-
 const font = Figtree({
   subsets: ["latin"],
 });
-
 
 export default function RootLayout({
   children,
@@ -21,11 +19,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-  className={`${font.className} antialiased`}
->
-        {children}
-      </body>
+      <body className={`${font.className} antialiased `}>{children}</body>
     </html>
   );
 }
