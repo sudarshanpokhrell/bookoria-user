@@ -60,7 +60,8 @@ export async function POST(request: Request) {
         isVerified: false,
       });
 
-      await newUser.save();
+      const savedUser = await newUser.save();
+      const user_id = savedUser._id;
     }
 
     //Verification Image sending process

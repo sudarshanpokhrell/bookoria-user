@@ -1,12 +1,7 @@
 import type { Metadata } from "next";
 import { Figtree, Poppins } from "next/font/google";
 import "./globals.css";
-
-const geistSans = Poppins({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-  weight: ["400", "700"],
-});
+import { Toaster } from "@/components/ui/toaster";
 
 const font = Figtree({
   subsets: ["latin"],
@@ -19,7 +14,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${font.className} antialiased `}>{children}</body>
+      <body className={`${font.className} antialiased `}>
+        {children}
+        <Toaster />
+      </body>
     </html>
   );
 }
