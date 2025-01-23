@@ -26,7 +26,7 @@ export async function POST(request: Request) {
 
     const existingUser = await UserModel.findOne({ email });
 
-    const verificationOTP = Math.floor(1000 + Math.random() * 90000).toString();
+    const verificationOTP = Math.floor(100000 + Math.random() * 900000).toString();
 
     if (existingUser) {
       if (existingUser.isVerified) {

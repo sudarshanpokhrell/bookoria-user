@@ -20,6 +20,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { Loader2 } from "lucide-react";
 import { signInSchema } from "@/schemas/signInSchema";
+import { signIn } from "next-auth/react";
 
 export function SignIn() {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -37,22 +38,27 @@ export function SignIn() {
   const onSubmit = async (data: z.infer<typeof signInSchema>) => {
     setIsSubmitting(true);
     try {
-      const response = await axios.post<ApiResponse>("/api/sign-up", data);
-
-      toast({
-        title: "Success",
-        description: response.data.message,
+      const result = await signIn("credentials", {
+        redirect: false, // Prevent automatic redirection
+        email: data.email,
+        password: data.password,
       });
 
-      const encodedEmail = encodeURIComponent(btoa(data.email));
-      router.replace(`/verify/${encodedEmail}`);
+      if (result?.error) {
+        toast({
+          title: "Login Failed",
+          description: result.error || "Incorrect credentials",
+          variant: "destructive",
+        });
+      } else {
+        // Redirect to the home page or dashboard on successful login
+        router.replace("/");
+      }
     } catch (error) {
-      console.log("Error signing up:", error);
       const axiosError = error as AxiosError<ApiResponse>;
-      let errorMessage = axiosError.response?.data.message;
       toast({
-        title: "Sign-in Failed",
-        description: errorMessage || "Error during sign-in",
+        title: "Login Failed",
+        description: axiosError.response?.data.message || "Something went wrong",
         variant: "destructive",
       });
     } finally {
@@ -76,7 +82,6 @@ export function SignIn() {
                 onSubmit={form.handleSubmit(onSubmit)}
                 className="space-y-4"
               >
-                
                 <FormField
                   control={form.control}
                   name="email"
