@@ -1,31 +1,30 @@
-
-"use client"
+"use client";
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { Facebook, Instagram } from "lucide-react";
 
 const Footer = () => {
-  const [nepalTime, setNepalTime] = useState(getNepalTime());
+  const [nepalTime, setNepalTime] = useState<string | null>(null);
 
   // Function to get Nepal time
   function getNepalTime() {
     const now = new Date();
-    const nepalTime = now.toLocaleTimeString("en-US", {
+    return now.toLocaleTimeString("en-US", {
       timeZone: "Asia/Kathmandu",
     });
-    return nepalTime;
   }
 
-  // Update Nepal time every second
+  // Update Nepal time every second, only on the client
   useEffect(() => {
+    setNepalTime(getNepalTime()); // Set initial time
     const interval = setInterval(() => {
       setNepalTime(getNepalTime());
     }, 1000);
-    return () => clearInterval(interval);
+    return () => clearInterval(interval); // Cleanup interval
   }, []);
 
   return (
-    <footer className="bg-[#000000] text-white px-5 pt-24 mt-20 pb-10 ">
+    <footer className="bg-[#000000] text-white px-5 pt-24 mt-20 pb-10">
       <div className="container mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8">
         {/* About Section */}
         <div>
@@ -48,18 +47,12 @@ const Footer = () => {
               </Link>
             </li>
             <li>
-              <Link
-                href="/"
-                className="hover:text-gray-400 transition-colors"
-              > 
+              <Link href="/" className="hover:text-gray-400 transition-colors">
                 Feedback
               </Link>
             </li>
             <li>
-              <Link
-                href="/"
-                className="hover:text-gray-400 transition-colors"
-              >
+              <Link href="/" className="hover:text-gray-400 transition-colors">
                 Customer Service
               </Link>
             </li>
@@ -73,7 +66,7 @@ const Footer = () => {
             <li>Address: Kathmandu, Nepal</li>
             <li>Cell: +977 98674598</li>
             <li>Email: contact@bookoria.com</li>
-            <li>Time: {nepalTime}</li>
+            <li>Time: {nepalTime || "Loading..."}</li>
           </ul>
           <div className="flex items-center space-x-4 mt-4">
             <Link

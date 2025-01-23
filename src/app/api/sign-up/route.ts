@@ -1,3 +1,4 @@
+import { sendVerificationEmail } from "@/helpers/sendVerificationEmail";
 import { dbConnect } from "@/lib/dbConnect";
 import UserModel from "@/model/User";
 import bcrypt from "bcryptjs";
@@ -47,25 +48,38 @@ export async function POST(request: Request) {
         await existingUser.save();
       }
     } else {
-      const hashedPassword = bcrypt.hash(password, 10);
+      const hashedPassword = await bcrypt.hash(password, 10);
       const expiryDate = new Date();
       expiryDate.setHours(expiryDate.getHours() + 1);
 
       const newUser = new UserModel({
         email,
         name,
-        password,
+        password:hashedPassword,
         verifyCode: verificationOTP,
         verifyCodeExpiry: expiryDate,
         isVerified: false,
       });
 
-      const savedUser = await newUser.save();
-      const user_id = savedUser._id;
+      await newUser.save();
     }
 
     //Verification Image sending process
+    const emailResponse = await sendVerificationEmail(
+      email,
+      name,
+      verificationOTP
+    );
 
+    if (!emailResponse.success) {
+      return Response.json(
+        {
+          success: false,
+          message: emailResponse.message,
+        },
+        { status: 500 }
+      );
+    }
     return Response.json(
       {
         success: true,

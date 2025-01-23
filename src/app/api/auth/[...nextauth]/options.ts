@@ -46,9 +46,14 @@ export const authOptions: NextAuthOptions = {
             );
           }
 
-          return user;
+          return {
+            _id: user._id.toString(),
+            email: user.email,
+            isVerified: user.isVerified,
+            name: user.name
+          };
         } catch (error: any) {
-          throw new Error(error);
+          throw new Error(error.message);
         }
       },
     }),
@@ -65,7 +70,7 @@ export const authOptions: NextAuthOptions = {
     async session({ session, token }: { session: any; token: any }) {
       if (token) {
         session.user._id = token._id;
-        session.user.isVerified = token.token.isVerified;
+        session.user.isVerified = token.isVerified;
         session.user.email = token.email;
       }
       return session;

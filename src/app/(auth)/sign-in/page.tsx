@@ -51,7 +51,6 @@ export function SignIn() {
           variant: "destructive",
         });
       } else {
-        // Redirect to the home page or dashboard on successful login
         router.replace("/");
       }
     } catch (error) {
