@@ -75,14 +75,17 @@ const Navbar = () => {
       <div className="container px-4 mx-auto">
         <div className="flex items-center justify-between h-16  ">
           <div className="flex items-center gap-4">
-            <Sheet >
+            <Sheet>
               <SheetTrigger asChild>
                 <Button variant="ghost" size="icon" className="md:hidden">
                   <Menu className="h-8 w-8" />
                   <span className="sr-only">Toggle menu</span>
                 </Button>
               </SheetTrigger>
-              <SheetContent side="left" className="w-[300px] sm:w-[400px] bg-white">
+              <SheetContent
+                side="left"
+                className="w-[300px] sm:w-[400px] bg-white"
+              >
                 <MobileNav />
               </SheetContent>
             </Sheet>
@@ -93,8 +96,8 @@ const Navbar = () => {
           </div>
 
           <nav className="hidden md:flex items-center space-x-8 px-5">
-            <Link 
-              href="/books" 
+            <Link
+              href="/books"
               className={cn(
                 "text-md font-medium transition-colors hover:text-primary",
                 pathname === "/books" ? "text-primary" : "text-muted-foreground"
@@ -102,20 +105,24 @@ const Navbar = () => {
             >
               All Books
             </Link>
-            <Link 
+            <Link
               href="/books/new-arrivals"
               className={cn(
                 "text-md font-medium transition-colors hover:text-primary",
-                pathname === "/books/new-arrivals" ? "text-primary" : "text-muted-foreground"
+                pathname === "/books/new-arrivals"
+                  ? "text-primary"
+                  : "text-muted-foreground"
               )}
             >
               New Arrivals
             </Link>
-            <Link 
+            <Link
               href="/books/popular"
               className={cn(
                 "text-md font-medium transition-colors hover:text-primary",
-                pathname === "/books/popular" ? "text-primary" : "text-muted-foreground"
+                pathname === "/books/popular"
+                  ? "text-primary"
+                  : "text-muted-foreground"
               )}
             >
               Popular
@@ -126,17 +133,23 @@ const Navbar = () => {
           </nav>
 
           <div className="flex items-center gap-4">
-            <Button variant="ghost" size="icon" >
-              <Search className=" " />
-              <span className="sr-only">Search</span>
+            <Button variant="ghost" size="icon">
+              <Link href={"/search"}>
+                <Search className=" " />
+                <span className="sr-only">Search</span>
+              </Link>
             </Button>
-            <Button variant="ghost" size="icon" >
-              <ShoppingCart className="h-5 w-5" />
-              <span className="sr-only">Cart</span>
+            <Button variant="ghost" size="icon">
+              <Link href={"/cart"}>
+                <ShoppingCart className="h-5 w-5" />
+                <span className="sr-only">Cart</span>
+              </Link>
             </Button>
-            <Button variant="ghost" size="icon" >
-              <User className="h-5 w-5" />
-              <span className="sr-only">Profile</span>
+            <Button variant="ghost" size="icon">
+              <Link href={"/profile"}>
+                <User className="h-5 w-5" />
+                <span className="sr-only">Profile</span>
+              </Link>
             </Button>
           </div>
         </div>
