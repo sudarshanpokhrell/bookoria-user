@@ -2,21 +2,19 @@ import React from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
+import { Book } from "@/model/Book";
 
 interface Props {
-  title: string;
-  price: number;
-  id?: string;
-  imageUrl: string;
+ book: Book
 }
 
-function HomeCard(book: Props) {
+const HomeCard: React.FC<Props> = ({ book }) => {
   return (
     <Card className="shadow-transparent border-none h-full">
       <CardContent className="p-2 sm:p-4 flex flex-col items-center h-full">
         <div className="w-full aspect-[3/4] rounded-lg sm:rounded-2xl overflow-hidden mb-2 sm:mb-4">
           <Image
-            src={book.imageUrl}
+            src={book.coverImage}
             alt={book.title}
             width={400}
             height={600}

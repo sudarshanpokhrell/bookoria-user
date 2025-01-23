@@ -8,10 +8,12 @@ export interface Book extends Document {
   price: number;
   format?: string;
   category: string;
-  imageUrl: string;
-  genre: string[];
+  coverImage: string;
+  genre: string;
   publishedYear?: number;
   createdAt: Date;
+  pages?: number;
+  language?:string,
 }
 
 const BookSchema: Schema<Book> = new Schema({
@@ -37,13 +39,12 @@ const BookSchema: Schema<Book> = new Schema({
     type: String,
     required: true,
   },
-  genre: [
-    {
-      type: String,
-      required: true,
-    },
-  ],
-  imageUrl: {
+  genre: {
+    type: String,
+    required: true,
+  },
+
+  coverImage: {
     type: String,
     required: true,
   },
@@ -52,4 +53,16 @@ const BookSchema: Schema<Book> = new Schema({
     required: true,
     default: Date.now,
   },
+  pages: {
+    type: Number,
+  },
+  language:{
+    type: String
+  }
 });
+
+const BookModel =
+  (mongoose.models.Book as mongoose.Model<Book>) ||
+  mongoose.model<Book>("Book", BookSchema);
+
+export default BookModel;
