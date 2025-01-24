@@ -11,20 +11,23 @@ export async function GET(req: Request) {
   try {
     const skip = (page - 1) * limit;
 
-    const books = await BookModel.find().skip(skip).limit(limit);
+    const books = await BookModel.find()
+      .sort({ createdAt: -1 })
+      .skip(skip)
+      .limit(limit);
 
-    const totalBooks = await BookModel.countDocuments()
-    const totalPages = Math.ceil(totalBooks/limit)
+    const totalBooks = await BookModel.countDocuments();
+    const totalPages = Math.ceil(totalBooks / limit);
     return Response.json(
       {
         message: "Successfully Fetched books",
         success: true,
         data: {
           books,
-          pagination:{
+          pagination: {
             totalPages,
-            currentPage:page
-          }
+            currentPage: page,
+          },
         },
       },
       {

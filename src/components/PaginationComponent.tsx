@@ -29,7 +29,7 @@ function PaginationComponent({ totalPage, currentPage, onPageChange }: Params) {
             // disabled={currentPage === 1}
           />
         </PaginationItem>
-        {Array.from({ length: 4 }, (_, index) => (
+        {Array.from({ length: totalPage }, (_, index) => (
           <PaginationItem key={index}>
             <PaginationLink
               href="#"

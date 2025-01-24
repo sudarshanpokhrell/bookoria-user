@@ -8,7 +8,7 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import { Button } from "@/components/ui/button";
-import HomeCard from "./HomeCard";
+import BookCard from "./BookCard";
 
 interface Book {
   id: string;
@@ -66,7 +66,7 @@ export function BookCarousel() {
               key={book.id}
               className="pl-4 basis-full xs:basis-1/2 sm:basis-1/2 md:basis-1/3 lg:basis-1/4"
             >
-              <HomeCard {...book} />
+              <BookCard book={book} />
             </CarouselItem>
           ))}
           <CarouselItem className="pl-4 basis-full xs:basis-1/2 sm:basis-1/2 md:basis-1/3 lg:basis-1/4">

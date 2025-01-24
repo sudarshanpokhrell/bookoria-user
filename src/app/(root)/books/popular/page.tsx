@@ -7,7 +7,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import BookCard from "@/components/BookCard";
 
-function Books() {
+function PopularBooks() {
   const [loading, setLoading] = useState(false);
   const [books, setBooks] = useState<Book[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
@@ -75,4 +75,4 @@ function Books() {
   );
 }
 
-export default Books;
+export default PopularBooks;
