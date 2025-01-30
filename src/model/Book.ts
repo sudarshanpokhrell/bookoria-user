@@ -14,6 +14,7 @@ export interface Book extends Document {
   createdAt: Date;
   pages?: number;
   language?:string,
+  sold?:number
 }
 
 const BookSchema: Schema<Book> = new Schema({
@@ -58,7 +59,14 @@ const BookSchema: Schema<Book> = new Schema({
   },
   language:{
     type: String
-  }
+  },
+  sold:{
+    type: Number,
+    default: 0
+  },
+  publishedYear: {
+    type: Number,
+  },
 });
 
 const BookModel =
