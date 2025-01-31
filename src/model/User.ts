@@ -1,5 +1,10 @@
 import mongoose, { Document, Schema, Types } from "mongoose";
 
+export interface CartItem {
+  book: Types.ObjectId;
+  quantity: number;
+}
+
 export interface User extends Document {
   _id: string;
   name: string;
@@ -9,6 +14,7 @@ export interface User extends Document {
   verifyCode: string;
   verifyCodeExpiry: Date;
   isVerified: boolean;
+  cart: CartItem[];
 }
 
 const UserSchema: Schema<User> = new Schema({
@@ -38,6 +44,18 @@ const UserSchema: Schema<User> = new Schema({
     type: Boolean,
     default: false,
   },
+  cart: [
+    {
+      book: {
+        type: Schema.Types.ObjectId,
+        ref: "Book",
+      },
+      quantity: {
+        type: Number,
+        default: 1,
+      },
+    },
+  ],
 });
 
 const UserModel =
