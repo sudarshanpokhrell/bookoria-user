@@ -21,7 +21,7 @@ import { useRouter } from "next/navigation";
 import { signUpSchema } from "@/schemas/signUpSchema";
 import { Loader2 } from "lucide-react";
 
-export function SignUp() {
+export default function SignUp() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
   const router = useRouter();
@@ -178,4 +178,3 @@ export function SignUp() {
   );
 }
 
-export default SignUp;
