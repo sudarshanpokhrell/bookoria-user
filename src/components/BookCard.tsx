@@ -27,7 +27,7 @@ const BookCard: React.FC<Props> = ({ book }) => {
     e.stopPropagation();
 
     try {
-      const response = await axios.post("/api/cart", {
+       await axios.post("/api/cart", {
         bookId: book._id,
       });
 

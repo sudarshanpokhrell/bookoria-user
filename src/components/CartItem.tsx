@@ -1,4 +1,7 @@
+"use client"
+
 import { Book } from "@/model/Book";
+import Image from "next/image";
 import React from "react";
 
 interface CartItemProps {
@@ -12,10 +15,12 @@ interface CartItemProps {
 function CartItem({ item, updateCart }: CartItemProps) {
   return (
     <li className="flex items-center gap-6 p-5 border-b border-gray-100 last:border-0">
-      <img
+      <Image
         src={item.book.coverImage}
         alt={item.book.title}
-        className="w-16 h-24 object-cover rounded shadow"
+        width={100}
+        height={180}
+        className=" object-cover rounded shadow"
       />
       
       <div className="flex-1">

@@ -57,7 +57,7 @@ function BookDetails() {
         <div className="text-center">
           <h2 className="text-2xl font-semibold text-gray-900">Book not found</h2>
           <p className="mt-2 text-gray-600">
-            The book you're looking for doesn't exist or has been removed.
+            The book you&apos;re looking for doesn&apos;t exist or has been removed.
           </p>
         </div>
       </div>

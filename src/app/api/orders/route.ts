@@ -6,7 +6,16 @@ import UserModel from "@/model/User";
 import BookModel, { Book } from "@/model/Book";
 import OrderModel from "@/model/Order";
 
-export async function POST(req: NextRequest) {
+
+interface CartItem {
+  book: {
+    _id: string;
+    price: number;
+  };
+  quantity: number;
+}
+
+export async function POST() {
   await dbConnect();
 
   const session = await getServerSession(authOptions);
@@ -36,12 +45,11 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    const orderItems = user.cart.map((item) => {
-      const book = item.book as any;
+    const orderItems = user.cart.map((item: CartItem) => {
       return {
-        book: book._id,
+        book: item.book._id,
         quantity: item.quantity,
-        price: book.price,
+        price: item.book.price,
       };
     });
 
@@ -59,7 +67,7 @@ export async function POST(req: NextRequest) {
 
     await newOrder.save();
 
-    for (let item of orderItems) {
+    for (const item of orderItems) {
       await BookModel.findByIdAndUpdate(item.book, {
         $inc: { stock: -item.quantity },
       });
@@ -85,7 +93,7 @@ export async function POST(req: NextRequest) {
   }
 }
 
-export async function GET(req: NextRequest) {
+export async function GET() {
   await dbConnect();
 
   const session = await getServerSession(authOptions);

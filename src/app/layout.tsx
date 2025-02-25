@@ -1,9 +1,7 @@
-import type { Metadata } from "next";
-import { Figtree, Poppins } from "next/font/google";
+import { Figtree } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
 import AuthProvider from "@/context/authContext";
-import { icons } from "lucide-react";
 
 const font = Figtree({
   subsets: ["latin"],

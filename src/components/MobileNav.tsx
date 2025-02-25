@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
@@ -19,7 +19,7 @@ interface MenuItem {
     title: string;
     href: string;
     description?: string;
-  }[];
+  }[]; 
 }
 
 const menuItems: MenuItem[] = [
@@ -64,10 +64,9 @@ const menuItems: MenuItem[] = [
 
 export function MobileNav() {
   const pathname = usePathname();
-  const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <ScrollArea className=" my-6 h-[calc(100vh-8rem)] pb-10">
+    <ScrollArea className="my-6 h-[calc(100vh-8rem)] pb-10">
       <div className="flex flex-col space-y-4 px-4">
         {menuItems.map((item) =>
           item.items ? (
@@ -85,7 +84,6 @@ export function MobileNav() {
                   <div className="flex flex-col space-y-3 pl-4 pt-2">
                     <Link
                       href={item.href}
-                      onClick={() => setIsOpen(false)}
                       className={cn(
                         "text-sm text-muted-foreground transition-colors hover:text-primary",
                         pathname === item.href && "text-primary font-medium"
@@ -97,7 +95,6 @@ export function MobileNav() {
                       <div key={subItem.href} className="space-y-1">
                         <Link
                           href={subItem.href}
-                          onClick={() => setIsOpen(false)}
                           className={cn(
                             "block text-sm text-muted-foreground transition-colors hover:text-primary",
                             pathname === subItem.href &&
@@ -116,7 +113,6 @@ export function MobileNav() {
             <Link
               key={item.href}
               href={item.href}
-              onClick={() => setIsOpen(false)}
               className={cn(
                 "py-2 text-base font-medium text-muted-foreground transition-colors hover:text-primary",
                 pathname === item.href && "text-primary"

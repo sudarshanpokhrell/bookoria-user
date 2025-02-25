@@ -2,7 +2,7 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import axios, { AxiosError } from "axios";
+import  { AxiosError } from "axios";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ApiResponse } from "@/types/ApiResponse";

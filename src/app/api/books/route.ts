@@ -31,7 +31,7 @@ export async function GET(req: Request) {
         status: 200,
       }
     );
-  } catch (error) {
+  } catch {
     return Response.json(
       {
         message: "Error fetching data.",

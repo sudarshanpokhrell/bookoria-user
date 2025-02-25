@@ -107,15 +107,26 @@ function Cart() {
       });
 
       setCart([]); // Clear cart after successful order
-    } catch (error: any) {
-      toast({
-        title: "Failed to place order",
-        description:
-          error?.response?.data?.message ||
-          error.message ||
-          "Something went wrong",
-        variant: "destructive",
-      });
+    } catch (error: unknown) {
+      if (axios.isAxiosError(error)) {
+        toast({
+          title: "Failed to place order",
+          description: error.response?.data?.message || "Something went wrong",
+          variant: "destructive",
+        });
+      } else if (error instanceof Error) {
+        toast({
+          title: "Failed to place order",
+          description: error.message,
+          variant: "destructive",
+        });
+      } else {
+        toast({
+          title: "Failed to place order",
+          description: "Something went wrong",
+          variant: "destructive",
+        });
+      }
     } finally {
       setCheckoutLoading(false);
     }
