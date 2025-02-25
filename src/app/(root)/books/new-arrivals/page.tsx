@@ -56,7 +56,7 @@ function NewArrivals() {
   return (
     <div className="min-h-screen flex flex-col justify-between">
       <div className="p-6">
-        <h1 className="text-4xl font-bold pl-3 pt-5 ">All Books</h1>
+        <h1 className="text-4xl font-bold pl-3 pt-5 ">New Arrivals</h1>
         <BookGrid className="mt-5">
           {books.length <= 0 ? (
             <li>No books</li>

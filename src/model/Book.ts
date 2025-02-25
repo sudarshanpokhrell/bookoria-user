@@ -10,7 +10,7 @@ export interface Book extends Document {
   category: string;
   coverImage: string;
   genre: string;
-  publishedYear?: number;
+  publishedYear?: Date;
   createdAt: Date;
   pages?: number;
   language?:string,
@@ -65,7 +65,7 @@ const BookSchema: Schema<Book> = new Schema({
     default: 0
   },
   publishedYear: {
-    type: Number,
+    type: Date,
   },
 });
 

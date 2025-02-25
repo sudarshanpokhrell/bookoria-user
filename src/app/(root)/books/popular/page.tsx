@@ -18,7 +18,7 @@ function PopularBooks() {
   const fetchData = async (page = 1) => {
     setLoading(true);
     try {
-      const response = await axios.get(`/api/books?page=${page}&limit=18`);
+      const response = await axios.get(`/api/books/popular?page=${page}&limit=18`);
       const data = await response.data;
       console.log(data);
       if (data.success) {
@@ -56,7 +56,7 @@ function PopularBooks() {
   return (
     <div className="min-h-screen flex flex-col justify-between">
       <div className="p-6">
-        <h1 className="text-4xl font-bold pl-3 pt-5 ">All Books</h1>
+        <h1 className="text-4xl font-bold pl-3 pt-5 ">Popular</h1>
         <BookGrid className="mt-5">
           {books.length <= 0 ? (
             <li>No books</li>

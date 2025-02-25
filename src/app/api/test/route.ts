@@ -1,6 +1,3 @@
-import { dbConnect } from "@/lib/dbConnect";
-import BookModel from "@/model/Book";
-
 const bookstoreData = [
   // Fiction Books
   {
@@ -856,46 +853,69 @@ const bookstoreData = [
     sold: 22,
   },
 ];
-export default bookstoreData;
+
+import { dbConnect } from "@/lib/dbConnect"; // Ensure you have the correct path
+import BookModel from "@/model/Book"; // Ensure you have the correct path
 
 export async function GET(request: Request) {
-  dbConnect();
+  await dbConnect(); // Wait for database connection
   try {
-    bookstoreData.map(async (item) => {
-      const {
-        price,
-        title,
-        author,
-        category,
-        genre,
-        description,
-        coverImage,
-        language,
-        format,
-        pages,
-        publicationDate: publishedYear,
-        sold,
-      } = item;
-      await BookModel.create({
-        price,
-        title,
-        author,
-        category: category.toLowerCase(),
-        genre: genre.toLowerCase(),
-        description,
-        coverImage,
-        language,
-        format,
-        pages,
-        publishedYear,
-        sold,
-      });
-    });
+    // Clear all existing books in the collection
+    await BookModel.deleteMany({});
 
-    return Response.json({
-      message: "Successful",
-    });
-  } catch (error) {
-    console.log(error);
+    // Insert new data into the collection
+    await BookModel.insertMany(
+      bookstoreData.map((item) => {
+        const {
+          price,
+          title,
+          author,
+          category,
+          genre,
+          description,
+          coverImage,
+          language,
+          format,
+          pages,
+          publicationDate: publishedYear,
+          sold,
+        } = item;
+
+        return {
+          price,
+          title,
+          author,
+          category: category.toLowerCase(),
+          genre: genre.toLowerCase(),
+          description,
+          coverImage,
+          language,
+          format,
+          pages,
+          publishedYear,
+          sold,
+        };
+      })
+    );
+
+    return new Response(
+      JSON.stringify({
+        message: "Successfully deleted all books and added new ones",
+      }),
+      {
+        status: 200,
+      }
+    );
+  } catch (error: any) {
+    console.error(error);
+    return new Response(
+      JSON.stringify({
+        message: "Internal server error",
+        error: error.message,
+      }),
+      {
+        status: 500,
+      }
+    );
   }
 }
