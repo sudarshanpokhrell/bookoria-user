@@ -39,28 +39,25 @@ const menuItems: MenuItem[] = [
     title: "Fiction",
     href: "/books/fiction",
     items: [
-      {
-        title: "Mystery",
-        href: "/books/fiction/mystery",
-      },
-      {
-        title: "Science Fiction",
-        href: "/books/fiction/sci-fi",
-      },
+      { href: "/books/fiction/fantasy", title: "Fantasy" },
+      { href: "/books/fiction/romance", title: "Romance" },
+      { href: "/books/fiction/adventure", title: "Adventure" },
+      { href: "/books/fiction/dystopian", title: "Dystopian" },
+      { href: "/books/fiction/classic", title: "Classic" },
+      { href: "/books/fiction/satire", title: "Satire" },
     ],
   },
   {
     title: "Non-Fiction",
     href: "/books/non-fiction",
     items: [
-      {
-        title: "Biography",
-        href: "/books/non-fiction/biography",
-      },
-      {
-        title: "History",
-        href: "/books/non-fiction/history",
-      },
+      { href: "/books/non-fiction/biography", title: "Biography" },
+      { href: "/books/non-fiction/science", title: "Science" },
+      { href: "/books/non-fiction/history", title: "History" },
+      { href: "/books/non-fiction/sociology", title: "Sociology" },
+      { href: "/books/non-fiction/physics", title: "Physics" },
+      { href: "/books/non-fiction/cosmology", title: "Cosmology" },
+      { href: "/books/non-fiction/memoir", title: "Memoir" },
     ],
   },
 ];

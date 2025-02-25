@@ -9,3 +9,18 @@ body,
     /* background-color: black;
     color-scheme: dark; */
 }
+
+
+
+@layer base {}
+
+
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+    }
+  body {
+    @apply bg-background text-foreground;
+    }
+}

@@ -1,6 +1,7 @@
 "use client";
 
 import CartItem from "@/components/CartItem";
+import { toast } from "@/hooks/use-toast";
 import { Book } from "@/model/Book";
 import axios from "axios";
 import Link from "next/link";
@@ -14,6 +15,7 @@ interface CartItemType {
 function Cart() {
   const [cart, setCart] = useState<CartItemType[]>([]);
   const [loading, setLoading] = useState(false);
+  const [checkoutLoading, setCheckoutLoading] = useState(false);
 
   useEffect(() => {
     async function fetchCart() {
@@ -79,6 +81,46 @@ function Cart() {
       .toFixed(2);
   };
 
+  const handleCheckOut = async () => {
+    if (cart.length === 0) {
+      toast({
+        title: "Your cart is empty",
+        description: "Add some items before checking out.",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    setCheckoutLoading(true);
+
+    try {
+      const res = await axios.post("/api/orders");
+      const data = res.data;
+
+      if (!data.success) {
+        throw new Error(data.message || "Failed to place order");
+      }
+
+      toast({
+        title: "Order placed successfully",
+        description: "You will receive a confirmation soon.",
+      });
+
+      setCart([]); // Clear cart after successful order
+    } catch (error: any) {
+      toast({
+        title: "Failed to place order",
+        description:
+          error?.response?.data?.message ||
+          error.message ||
+          "Something went wrong",
+        variant: "destructive",
+      });
+    } finally {
+      setCheckoutLoading(false);
+    }
+  };
+
   return (
     <div className="max-w-3xl mx-auto p-6">
       <h2 className="text-2xl font-medium text-gray-900 mb-6">Your Cart</h2>
@@ -118,8 +160,14 @@ function Cart() {
               </p>
             </div>
 
-            <button className="px-6 py-2 bg-gray-900 text-white rounded-xl hover:bg-gray-800 focus:outline-none">
-              Checkout
+            <button
+              className={`px-6 py-2 bg-gray-900 text-white rounded-xl hover:bg-gray-800 focus:outline-none ${
+                checkoutLoading ? "opacity-50 cursor-not-allowed" : ""
+              }`}
+              onClick={handleCheckOut}
+              disabled={checkoutLoading}
+            >
+              {checkoutLoading ? "Processing..." : "Checkout"}
             </button>
           </div>
         </div>

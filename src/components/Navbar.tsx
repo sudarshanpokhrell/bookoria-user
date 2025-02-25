@@ -62,12 +62,20 @@ const Navbar = () => {
   const fictionItems = [
     { href: "/books/fiction/fantasy", label: "Fantasy" },
     { href: "/books/fiction/romance", label: "Romance" },
+    { href: "/books/fiction/adventure", label: "Adventure" },
+    { href: "/books/fiction/dystopian", label: "Dystopian" },
+    { href: "/books/fiction/classic", label: "Classic" },
+    { href: "/books/fiction/satire", label: "Satire" },
   ];
 
   const nonFictionItems = [
     { href: "/books/non-fiction/biography", label: "Biography" },
     { href: "/books/non-fiction/science", label: "Science" },
     { href: "/books/non-fiction/history", label: "History" },
+    { href: "/books/non-fiction/sociology", label: "Sociology" },
+    { href: "/books/non-fiction/physics", label: "Physics" },
+    { href: "/books/non-fiction/cosmology", label: "Cosmology" },
+    { href: "/books/non-fiction/memoir", label: "Memoir" },
   ];
 
   return (
