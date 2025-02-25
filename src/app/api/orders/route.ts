@@ -3,7 +3,7 @@ import { getServerSession } from "next-auth";
 import {  NextResponse } from "next/server";
 import { authOptions } from "../auth/[...nextauth]/options";
 import UserModel from "@/model/User";
-import BookModel, { Book } from "@/model/Book";
+import BookModel from "@/model/Book";
 import OrderModel from "@/model/Order";
 
 
