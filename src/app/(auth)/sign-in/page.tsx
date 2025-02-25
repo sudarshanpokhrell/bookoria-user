@@ -2,7 +2,7 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import  { AxiosError } from "axios";
+import { AxiosError } from "axios";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ApiResponse } from "@/types/ApiResponse";
@@ -22,7 +22,7 @@ import { Loader2 } from "lucide-react";
 import { signInSchema } from "@/schemas/signInSchema";
 import { signIn } from "next-auth/react";
 
-export function SignIn() {
+function SignIn() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
   const router = useRouter();
@@ -51,7 +51,7 @@ export function SignIn() {
           variant: "destructive",
         });
       } else {
-        router.replace("/");
+        router.replace("/"); // Redirect to home page
       }
     } catch (error) {
       const axiosError = error as AxiosError<ApiResponse>;
@@ -145,7 +145,7 @@ export function SignIn() {
           </div>
           <div className="text-center mt-4">
             <p>
-              Don&rsquo;t have account?{" "}
+              Don&rsquo;t have an account?{" "}
               <Link
                 href="/sign-up"
                 className="text-[#463F3A] hover:text-gray-800"
