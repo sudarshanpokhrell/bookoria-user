@@ -1,6 +1,6 @@
 import { dbConnect } from "@/lib/dbConnect";
 import { getServerSession } from "next-auth";
-import { NextRequest, NextResponse } from "next/server";
+import {  NextResponse } from "next/server";
 import { authOptions } from "../auth/[...nextauth]/options";
 import UserModel from "@/model/User";
 import BookModel, { Book } from "@/model/Book";

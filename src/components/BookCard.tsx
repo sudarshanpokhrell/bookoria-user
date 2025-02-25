@@ -27,7 +27,7 @@ const BookCard: React.FC<Props> = ({ book }) => {
     e.stopPropagation();
 
     try {
-       await axios.post("/api/cart", {
+      await axios.post("/api/cart", {
         bookId: book._id,
       });
 
@@ -35,16 +35,10 @@ const BookCard: React.FC<Props> = ({ book }) => {
         title: "Success",
         description: "Book added to cart successfully",
       });
-
-    } catch (error: any) {
-      if (error.response?.status === 401) {
-        router.push("/sign-in");
-        return;
-      }
-
+    } catch {
       toast({
         title: "Error",
-        description: error.response?.data?.message || "Something went wrong",
+        description: "Something went wrong | If not signed In, please signIn",
         variant: "destructive",
       });
     }

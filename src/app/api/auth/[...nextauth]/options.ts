@@ -26,7 +26,7 @@ export const authOptions: NextAuthOptions = {
       },
       async authorize(
         credentials: Record<"email" | "password", string> | undefined,
-        req
+        
       ): Promise<User | null> {
         if (!credentials) {
           throw new Error("Credentials are required");

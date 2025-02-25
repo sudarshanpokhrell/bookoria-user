@@ -145,7 +145,7 @@ export function SignIn() {
           </div>
           <div className="text-center mt-4">
             <p>
-              Don't have account?{" "}
+              Don&rsquo;t have account?{" "}
               <Link
                 href="/sign-up"
                 className="text-[#463F3A] hover:text-gray-800"
