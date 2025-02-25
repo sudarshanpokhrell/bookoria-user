@@ -5,7 +5,7 @@ import Link from "next/link";
 
 const HeroSection = () => {
   return (
-    <section className="container mx-auto px-10 py-10">
+    <section className="container flex justify-between px-10 py-10">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
         {/* Text Content */}
         <div className="space-y-6">

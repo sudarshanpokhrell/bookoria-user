@@ -8,6 +8,13 @@ const font = Figtree({
   subsets: ["latin"],
 });
 
+export const metadata = {
+  title: "Bookoria | Best Bookstore",
+  description: "Buy books online in Kathmandu, Nepal",
+};
+
+
+
 export default function RootLayout({
   children,
 }: Readonly<{
