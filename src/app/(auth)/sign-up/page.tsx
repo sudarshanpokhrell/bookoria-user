@@ -50,7 +50,7 @@ export function SignUp() {
     } catch (error) {
       console.log("Error signing up:", error);
       const axiosError = error as AxiosError<ApiResponse>;
-      let errorMessage = axiosError.response?.data.message;
+      const errorMessage = axiosError.response?.data.message;
       toast({
         title: "Sign-up Failed",
         description: errorMessage || "Error signing up",

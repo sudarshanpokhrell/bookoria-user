@@ -1,9 +1,8 @@
-import type { Metadata } from "next";
-import { Figtree, Poppins } from "next/font/google";
+import { Figtree } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
 import AuthProvider from "@/context/authContext";
-import { icons } from "lucide-react";
+import ErrorBoundary from "@/components/ErrorBoundary";
 
 const font = Figtree({
   subsets: ["latin"],
@@ -25,7 +24,9 @@ export default function RootLayout({
     <html lang="en">
       <AuthProvider>
         <body className={`${font.className} antialiased `}>
-          {children}
+          <ErrorBoundary>
+            {children}
+          </ErrorBoundary>
           <Toaster />
         </body>
       </AuthProvider>
