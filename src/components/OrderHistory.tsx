@@ -115,7 +115,7 @@ export default function OrderHistory() {
           <ShoppingBag className="h-8 w-8 text-gray-400" />
         </div>
         <h3 className="text-xl font-medium text-gray-900 mb-2">No orders yet</h3>
-        <p className="text-gray-500 max-w-md mx-auto mb-6">You haven't placed any orders yet. Start exploring our collection to find your next favorite book.</p>
+        <p className="text-gray-500 max-w-md mx-auto mb-6">You haven&apost placed any orders yet. Start exploring our collection to find your next favorite book.</p>
         <Link
           href="/books" 
           className="inline-flex items-center px-4 py-2 bg-[#1F2937] text-white rounded-xl hover:bg-indigo-700 transition-colors"
