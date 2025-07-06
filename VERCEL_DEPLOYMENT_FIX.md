@@ -1,20 +1,23 @@
 # Vercel Deployment Fix Guide
 
 ## Issue Fixed
-The error "Export encountered an error on /_error: /404, exiting the build" was caused by missing error pages in Next.js 15 App Router.
+The error "Export encountered an error on /_error: /404, exiting the build" and "Error occurred prerendering page '/404'" were caused by missing error pages and static generation issues in Next.js 15 App Router.
 
 ## Changes Made
 
 ### 1. Created Required Error Pages
-- ✅ `src/app/not-found.tsx` - Custom 404 page
-- ✅ `src/app/error.tsx` - Error page for root layout
-- ✅ `src/app/global-error.tsx` - Global error page
+- ✅ `src/app/not-found.tsx` - Custom 404 page (with dynamic rendering)
+- ✅ `src/app/error.tsx` - Error page for root layout (with dynamic rendering)
+- ✅ `src/app/global-error.tsx` - Global error page (with dynamic rendering)
 - ✅ `src/app/loading.tsx` - Loading page
+- ✅ `src/app/template.tsx` - Template for consistent rendering
 
 ### 2. Updated Next.js Configuration
 - ✅ Added TypeScript and ESLint ignore settings
 - ✅ Added production optimizations
 - ✅ Disabled telemetry
+- ✅ Added static generation settings
+- ✅ Force dynamic rendering on root layout
 
 ### 3. Created Vercel Configuration
 - ✅ `vercel.json` with proper build settings
@@ -25,6 +28,8 @@ The error "Export encountered an error on /_error: /404, exiting the build" was 
 - ✅ Removed unused imports in root page
 - ✅ Improved error handling in API routes
 - ✅ Added proper async/await handling
+- ✅ Updated middleware configuration
+- ✅ Added dynamic rendering exports to prevent prerender errors
 
 ## Environment Variables Required
 
@@ -90,12 +95,15 @@ RESEND_API_KEY=your-resend-api-key
 - `src/app/error.tsx`
 - `src/app/global-error.tsx`
 - `src/app/loading.tsx`
+- `src/app/template.tsx`
 - `vercel.json`
 
 ### Modified Files:
 - `next.config.ts`
 - `src/app/(root)/page.tsx`
 - `src/app/api/books/route.ts`
+- `src/app/layout.tsx`
+- `src/middleware.ts`
 - `package.json`
 
 ## Next Steps

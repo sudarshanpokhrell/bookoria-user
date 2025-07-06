@@ -30,5 +30,14 @@ export async function middleware(req: NextRequest) {
 
 // Define the paths the middleware should run on
 export const config = {
-  matcher: ["/profile", "/sign-in", "/sign-up", "/verify-code", "/"],
+  matcher: [
+    /*
+     * Match all request paths except for the ones starting with:
+     * - api (API routes)
+     * - _next/static (static files)
+     * - _next/image (image optimization files)
+     * - favicon.ico (favicon file)
+     */
+    '/((?!api|_next/static|_next/image|favicon.ico).*)',
+  ],
 };

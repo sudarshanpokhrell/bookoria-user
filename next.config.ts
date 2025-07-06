@@ -27,6 +27,10 @@ const nextConfig: NextConfig = {
   
   // Disable telemetry
   telemetry: false,
+  
+  // Static generation settings
+  trailingSlash: false,
+  generateEtags: false,
 };
 
 export default nextConfig;

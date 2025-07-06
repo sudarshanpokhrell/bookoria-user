@@ -54,4 +54,7 @@ export default function GlobalError({
       </body>
     </html>
   )
-} 
+}
+
+// Disable static generation for this page
+export const dynamic = 'force-dynamic' 

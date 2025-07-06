@@ -33,3 +33,6 @@ export default function RootLayout({
     </html>
   );
 }
+
+// Force dynamic rendering to prevent static generation issues
+export const dynamic = 'force-dynamic'
