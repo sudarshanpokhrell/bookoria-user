@@ -142,7 +142,7 @@ const Navbar = () => {
 
           <div className="flex items-center gap-4">
             <Button variant="ghost" size="icon">
-              <Link href={"/search"}>
+              <Link href={"/"}>
                 <Search className=" " />
                 <span className="sr-only">Search</span>
               </Link>
