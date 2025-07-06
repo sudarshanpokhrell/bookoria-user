@@ -9,10 +9,10 @@ const nextConfig: NextConfig = {
       },
     ],
   },
-  typescript:{
+  typescript: {
     ignoreBuildErrors: true
   },
-  eslint:{
+  eslint: {
     ignoreDuringBuilds: true
   },
   compress: true,
@@ -24,6 +24,9 @@ const nextConfig: NextConfig = {
   experimental: {
     optimizeCss: true,
   },
+  
+  // Disable telemetry
+  telemetry: false,
 };
 
 export default nextConfig;

@@ -1,6 +1,5 @@
 import BookCarousel from "@/components/Carousel";
 import HeroSection from "@/components/HeroSection";
-import { useEffect } from "react";
 
 export default function Home() {
   
